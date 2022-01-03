@@ -13,7 +13,7 @@
 - `git status` : 해당 폴더 내의 형상관리 상태 정보
 - `git add [.]` : staging, 일부 파일만 스테이징 할 때 이름이 변경되거나 삭제된 파일은 누락됨
 - `git add [-u]` : 수정되거나 삭제된 파일 반영
-- `git rm (oldname) (newname)` : 로컬과 저장소에서 파일명 변경, 변경시점에서 커밋하기
+- `git mv (oldname) (newname)` : 로컬과 저장소에서 파일명 변경, 변경시점에서 커밋하기
 
 - `git commit [-m "commit message"]`
 - `git commit [-a]` 수정되거나 삭제한 파일만 commit
