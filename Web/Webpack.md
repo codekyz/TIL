@@ -2,6 +2,8 @@
 
 [웹팩 핸드북](https://joshua1988.github.io/webpack-guide/)  
 
+[웹팩 공식문서](https://webpack.js.org/concepts/)  
+
 
 # Node.js와 NPM
 > 웹팩을 사용하기 위해 Node.js와 NPM이 설치되어 있어야 함
@@ -93,4 +95,6 @@
         // 로더 순서도 영향이 있음(오른쪽에서 왼쪽순서로 적용)
     }
     ```
-4. plugin
+4. plugin(plugins)
+    - 웹팩의 기본적인 동작에 추가적인 기능을 제공하는 속성
+    - 플러그인은 결과물의 형태를 바꾸는 역할
