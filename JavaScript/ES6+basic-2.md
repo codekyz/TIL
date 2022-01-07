@@ -52,3 +52,95 @@ const reduce = (f, acc, iter) => {
 
 #### 중첩 사용
 - `map` `filter` `reduce` 중첩 사용이 가능
+```
+log(
+    reduce(
+        add,
+        map(p => p.price,
+            filter(p => p.price < 20000, products))));
+    )
+)
+```
+
+## 코드를 값으로 다루어 표현력 높이기
+#### go
+```
+const go = (...args) => reduce((a, f) => f(a), args);
+
+go(
+    0,
+    a => a + 1,
+    a => a + 10,
+    a => a + 100,
+    log
+);
+// 111
+
+go(
+    products,
+    products => filter(p => p.price < 20000, products,
+    products => map(p => p.price, products),
+    prices => reduce(add, prices),
+    log);
+)
+// 위 중첩된 코드를 읽기 쉽도록 개선
+
+go(
+    products,
+    filter(p => p.price < 20000),
+    map(p => p.price),
+    reduce(add),
+    log);
+)
+// curry를 통해 보다 간결하게 개선(filter, map, reduce에 curry적용)
+```
+
+#### pipe
+```
+const pipe = (...fs) => (a) => go(a, ...fs);
+
+const f = pipe(
+    a => a + 1,
+    a => a + 10,
+    a => a + 100,
+);
+log(f(0));
+// 111
+```
+
+#### curry
+```
+const curry = f =>
+    (a, ..._) => _.length ? f(a, ..._) : (..._) => f(a, ..._);
+// 함수를 받아서 함수를 리턴하는데 함수가 실행되었을 때
+// 인자가 두개 이상이라면 받아둔 함수를 즉시실행하고
+// 한개라면 함수를 다시 리턴한 후에 이후에 받은 인자를 합쳐서 실행하는 함수
+
+const mult = curry((a, b) => a*b);
+log(mult(1)(3));
+// 3
+
+const mult3 = mult(3);
+log(mult3(10));
+log(mult3(5));
+log(mult3(3));
+// 30 15 9
+```
+
+## 함수 조합으로 함수 만들기
+```
+const total_price = pipe(
+    map(p => p.price),
+    reduce(add));
+
+const base_total_price = predi => pipe(
+    filter(predi),
+    total_price);
+
+go(
+    products,
+    base_total_price(p => p.price < 20000),
+    log);
+)
+
+```
