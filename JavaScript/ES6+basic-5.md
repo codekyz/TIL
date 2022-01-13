@@ -66,7 +66,7 @@ log(go1(go1(n2, add5), log));
 
 
 ## go, pipe, reduce에서 비동기 제어
-- ex) test/es6_code.html - 39 line
+- ex) test/es6_code.html - 39 line go1()
 
 
 ## Promise.then의 중요한 규칙
@@ -79,3 +79,99 @@ new Promise(resolve => resolve(new Promise(resolve => resolve(1))))).then(log);
 // 1
 ```
 
+## 지연 평가 + Promise - L.map, map, take
+- 지연평가와 비동기 동시성을 지원하는 함수
+```
+const go1 = (a, f) => a instanceof Promise ? a.then(f) : f(a);
+
+const take = curry((l, iter) => {
+    let res = [];
+    // 재귀
+    return function recur() {
+        for (const a of iter) {
+            if (a instanceof Promise) return a
+                .then(a =>  (res.push(a), res).length == l ? res : recur())
+                // Kleisli Composition 활용
+                .catch(e => e == nop ? recur() : Promise.recject(e));
+            res.push(a);
+            if (res.length == l) return res;
+        }
+        return res;
+    } ();
+});
+
+L.map = curry(function *(f, iter) {
+    for(const a of iter) {
+        yield go1(a, f);
+});
+
+go(
+    // [1, 2, 3]
+    [Promise.resolve(1), Promise.resolve(2), Promise.resolve(3)],
+
+    // L.map(a => a + 10),
+    // L.map(a => Promise.resolve(a + 10)),
+
+    // map은 L.map, takeAll을 하는 함수
+    map(a => Promise.resolve(a + 10)),
+    // takeAll,
+    log);
+```
+
+## Kleisli Composition - L.filter, filter, nop, take
+- 필터에서 지연평가와 비동기 동시성, Promise를 지원하려면 Kleisli Composition을 활용해야함
+- `Promise.reject()`를 하게되면 모든 `.then`을 무시하고 `.catch`로 감
+```
+// 아무일도 하지않는다는 구분자
+const nop = Sybol('nop');
+
+L.filter = curry(function *(f, iter) {
+    for(const a of iter) {
+        const b = go1(a, b);
+        if (b isinstanceof Promise) yield b
+            .then(b => b ? a : Promise.reject(nop));
+        else if (f(b)) yield a;
+    }
+});
+
+go([1, 2, 3, 4, 5, 6],
+    L.map(a => Promise.resolve(a * a)),
+    L.filter(a => a % 2),
+    L.map(a => a * a),
+    take(4),
+    log);
+```
+
+## reduce에서 nop지원
+- 지연평가와 비동기 동시성을 지원하는 reduce
+```
+const reduceF = (acc, a, f) => 
+    a instanceof Promise ? 
+        a.then(a => f(acc, a), e => e == nop ? acc : Promise.recject(e)) : 
+        f(acc, a);
+
+const head = iter => go1(take(1, iter), ([h]) => h);
+
+const reduce = curry((f, acc, iter) => {
+    if (!iter) return reduce(f, head(iter = acc[Symbol.iterator](), iter);
+
+    iter = iter([Symbol.iterator]());
+    return go1(acc, function recur(acc) {
+        let cur;
+        while(!(cur = iter.next()).done) {
+            acc = reduceF(acc, cur.value, f);
+            if (acc instanceof Promise) return acc.then(recur);
+        }
+    });
+    return acc;
+});
+
+go([1, 2, 3, 4],
+    L.map(a => Promise.resolve(a * a)),
+    L.filter(a => Promise.resolve(a % 2)),
+    reduce(add),
+    log);
+```
+
+## 지연 평가 + Promise의 효율성
+- 모든 값을 평가하고 그 중에서 `take`하는게 아니라 원하는 값을 `take`하고 나면 나머지는 아예 평가하지 않음
