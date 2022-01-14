@@ -87,7 +87,7 @@ const pa = Promise.resolve(10);
 
 ## async/await와 파이프라인을 같이 사용하기도 하는지?
 ```
-aync function f5(list) {
+async function f5(list) {
     const r1 = await go(list,
         L.map(a => delayI(a * a)),
         L.filter(a => delayI(a % 2)),
