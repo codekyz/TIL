@@ -17,7 +17,7 @@
 
 - `git commit [-m "commit message"]`
 - `git commit [-a]` 수정되거나 삭제한 파일만 commit
-- `git reset [--hard 'commit hash code']` : 해당 커밋으로 롤백
+- `git reset [--hard, --soft, --mixed 'commit hash code']` : 해당 커밋으로 롤백
 - `git reset [--hard]` : 가장 마지막 커밋으로 롤백
 
 - `git remote add origin 'repository url'` : 깃허브와 연동
