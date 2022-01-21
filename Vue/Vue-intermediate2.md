@@ -131,6 +131,7 @@ components:{
 - Vue Components -> Actions -> Mutations -> State
 
 ### Vuex 설치하기
+- [vue3 이상에서 vuex 사용하기](https://dev.to/daniel_adekoya_/how-to-initialize-vuex-in-the-new-vue-3-preview-49ef)
 - [vuex - 공식 문서](https://vuex.vuejs.org/kr/)  
 ```
 npm i vuex --save
@@ -152,6 +153,12 @@ export const store = new Vuex.Store({
 });
 
 // main.js에서 vue에 store를 등록
+import { createApp } from 'vue'
+import App from './App.vue'
+import { store } from './store/store'
+
+createApp(App).use(store).mount('#app')
+
 ```
 
 
