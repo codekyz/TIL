@@ -8,6 +8,8 @@
 # HTML&CSS
 - [HTML5 정리](https://github.com/codekyz/TIL/blob/fb49ad9b31d2f80c3846550a9cb969babf541070/HTML&CSS/HTML-basic-1.md)  
 - [CSS3 정리](https://github.com/codekyz/TIL/blob/fb49ad9b31d2f80c3846550a9cb969babf541070/HTML&CSS/CSS-basic-1.md)  
+- [반응형 웹 정리](https://github.com/codekyz/TIL/blob/2fe8ca2701041a9f3b457993ab147a05fc78c8c4/HTML&CSS/Responsive-web.md)
+- [HTML5 Semantic Tags](https://github.com/codekyz/TIL/blob/2fe8ca2701041a9f3b457993ab147a05fc78c8c4/HTML&CSS/Semantic-Tags.md)
 
 
 # JavaScript
@@ -52,3 +54,4 @@
 
 
 # ETC
+- [API](https://github.com/codekyz/TIL/blob/2fe8ca2701041a9f3b457993ab147a05fc78c8c4/ETC/API.md)
