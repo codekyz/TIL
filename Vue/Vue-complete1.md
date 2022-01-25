@@ -15,7 +15,7 @@ module.exports = {
 ## Router
 [Vue Router 정리](https://github.com/codekyz/TIL/blob/main/Vue/Vue2_Router_Axios.md)  
 - 버전업되면서 조금 달라졌을 수 있음
-- [vue-news](https://github.com/codekyz/vue-news/blob/main/src/router/index.js) 프로젝트 참고
+- [vue-news](https://github.com/codekyz/vue-news) 프로젝트 참고
 
 ### router-link
 - 자동으로 a태그로 변환해줌
@@ -35,3 +35,17 @@ module.exports = {
 4. 비동기 처리에서의 this === 호출 후 `undefind`
     - 화살표 함수를 사용하면 호출 전의 this를 가지고 옴
 
+
+## Callback, Promise
+[자바스크립트 비동기 처리 - Callback과 Promise](https://github.com/codekyz/TIL/blob/main/JavaScript/Asynchronous_processing.md)
+- Callback 함수의 문제점 : Callback이 중첩되었을 때 절차적 사고에 위배되는 결과가 나옴(콜백지옥)
+- Promise 등장 : 효율적인 Callback관리와 직관적 코드 목적
+
+## Dynamic Route Matching 동적 라우트 매칭
+[Vue.js 공식문서 - Dynamic Route Matching](https://router.vuejs.org/kr/guide/essentials/dynamic-matching.html)
+```
+{
+    path: '/user/:id',
+    component: UserView,
+},
+```
