@@ -1,12 +1,12 @@
 [만들면서 배우는 리액트:기초 - 진유림님](https://inf.run/eFeh)  
 
-
 [React 공식문서](https://ko.reactjs.org/docs/add-react-to-a-website.html)  
 [Ant Design](https://ant.design/components/overview/)  
 
 ## Component
 - 시작은 대문자
 - component는 함수를 통해 만듬(props)
+- 사용자 정의 태그
 
 ## JSX
 - JavaScript + XML
