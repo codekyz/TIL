@@ -7,6 +7,6 @@ npm i gh-pages
 .
 .
 .
-"deploy" : "gh-pages -d build"
+"deploy" : "gh-pages -d build(빌드 디렉토리)"
 ```
 - 빌드 후 빌드한 파일이 github pages로 올라가게됨
