@@ -10,6 +10,7 @@
 - 컴포넌트들을 렌더링할 루트(div)가 필요
 - 상태(state) = 바뀌는, 바뀔여지가 있는 부분
 - 클래스 사용 시 클래스1 === 컴포넌트1
+- `class` 대신 `className` `For` 대신 `htmlFor` html과 헷갈릴 수 있어서 구분
 
 ## JSX
 - babel 사용 `<script type="text/babel">`
@@ -18,9 +19,19 @@
 - babel의 역할 = `createElement` -> `<>`
 - 컴포넌트는 대문자로 시작, 태그는 소문자
 - `<></>` : 최상단에 들어가는 껍데기(div대신)
+
+# Class
 - DOM에 직접 접근하고 싶을때는 `ref`사용
 ```
-ref={(c) => {this.input = c; }} 
+input;
+...
+render() {
+    return (
+        <input
+            ref={(c) => {this.input = c; }} 
+        />
+    )
+}
 ```
 
 ## setState
@@ -36,4 +47,45 @@ this.setState((prevState) => {
 });
 ```
 - setState는 비동기
-- setState가 실행될 때 마다 render가 실행됨(따라서 따로 뺄 수 있는건 빼주는게 좋음)
+- setState가 실행될 때 마다 render만 같이 실행됨(따라서 따로 뺄 수 있는건 빼주는게 좋음)
+
+
+# React Hooks
+- 함수 컴포넌트 : setState나 ref를 안쓰는 경우에 썼었음
+- Hooks = 함수 컴포넌트 + state, ref ...
+- setState 분리
+```
+const GuGuDan = () => {
+    const [first, setFirst] = React.useState(Math.ceil(Math.random() * 9 ));
+    const [second, setSecond] = React.useState(Math.ceil(Math.random() * 9 ));
+    const [value, setValue] = React.useState('');
+    const [result, setResult] = React.useState('');
+}
+```
+- state가 바뀔 때 마다 함수가 다시 실행되므로 느릴 수 있음(렌더링)
+- setState는 비동기이기 때문에 모아서 한번에 처리됨
+
+
+## 웹팩
+- 스크립트의 중복을 최소화 하기 위해 웹팩 등장
+- node.js는 자바스크립트(웹팩) 실행기
+- **웹팩 셋팅**
+- `npm init` - `npm i react react-cli` - `npm i -D webpack webpack-cli`
+- `webpack.config.js` module.exports
+- `client.jsx`
+    ```
+    const React = require('react');
+    const ReactDom = require('react-dom');
+    const WordRelay = require('./WordRelay');
+
+    ReactDom.render(<WordRelay />, document.querySelector('#root'));
+    ```
+- `index.html`
+    ```
+    <div id="root"></div>
+    <script src="./dist/app.js"></script>
+    ```
+- 클래스(컴포넌트) jsx로 쪼개기
+- **웹팩 실행**
+    1. package.json - script
+    2. npx webpack
