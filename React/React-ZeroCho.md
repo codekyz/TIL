@@ -19,6 +19,7 @@
 - babel의 역할 = `createElement` -> `<>`
 - 컴포넌트는 대문자로 시작, 태그는 소문자
 - `<></>` : 최상단에 들어가는 껍데기(div대신)
+- `value`와 `onChange`는 세트(or `defaultValue`)
 
 # Class
 - DOM에 직접 접근하고 싶을때는 `ref`사용
@@ -70,8 +71,49 @@ const GuGuDan = () => {
 - 스크립트의 중복을 최소화 하기 위해 웹팩 등장
 - node.js는 자바스크립트(웹팩) 실행기
 - **웹팩 셋팅**
-- `npm init` - `npm i react react-cli` - `npm i -D webpack webpack-cli`
-- `webpack.config.js` module.exports
+- `npm init` - `npm i react react-dom` - `npm i -D webpack webpack-cli`
+- `webpack.config.js` 
+- 플러그인들의 모음이 프리셋
+- [browserslist](https://github.com/browserslist/browserslist)
+```
+const path = require('path');
+
+module.exports = {
+    name: 'wordrelay-setting',
+    mode: 'development', // 실서비스 : production
+    devtool: 'eval',
+    resolve: {
+        extensions: ['.js', '.jsx'],
+    },
+    entry: {
+        app: ['./client'],
+    }, // 입력(불러오는 파일은 같이 입력됨)
+    module: {
+        rules: {
+            test: /\.jsx?/,
+            loader: 'babel-loader',
+            options: {
+                presets:[
+                    ['@babel/preset-env', {
+                        targets: {
+                            browsers: ['> 1% in KR'], // 지원 브라우저 지정가능
+                        },
+                        debug: true,
+                    }], 
+                    '@babel/preset-react'
+                ],
+                plugins: [''],
+            },
+        },
+    },
+    plugins: [],
+    output: {
+        path: path.join(__dirname, 'dist'),
+        filename: 'app.js',
+    }, // 출력
+};
+
+```
 - `client.jsx`
     ```
     const React = require('react');
@@ -89,3 +131,19 @@ const GuGuDan = () => {
 - **웹팩 실행**
     1. package.json - script
     2. npx webpack
+
+
+## react-refresh
+- 핫 리로딩 기능, 변경사항을 감지해서 반영해줌.
+    - 리로딩과는 다름(리로딩은 새로고침으로 데이터가 날아감)
+```
+"dev": "webpack serve --env development"
+// script 서버실행
+
+"react-refresh": "^0.11.0",
+"@pmmmwh/react-refresh-webpack-plugin": "^0.5.4",
+"webpack-dev-server": "^4.7.4"
+//설치
+```
+- 추후 webpack.config.js 링크[]()
+
