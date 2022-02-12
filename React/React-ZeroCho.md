@@ -147,3 +147,20 @@ module.exports = {
 ```
 - 추후 webpack.config.js 링크[]()
 
+
+## map
+- 리액트에서의 반복문
+- key값은 고유해야함(i는 쓰면 안됨)
+```
+{[
+    { fruit:'사과', taste:'맛있다' },
+    { fruit:'사과', taste:'맛없다' }
+].map((v, i) => {
+    return (
+        <li key={v.fruit + v.taste}><b>{i + v.fruit}</b> - {v.taste}</li>
+    );
+})}
+```
+
+## props
+[props 공식문서](https://ko.reactjs.org/docs/components-and-props.html)
