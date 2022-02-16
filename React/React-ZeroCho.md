@@ -164,3 +164,24 @@ module.exports = {
 
 ## props
 [props 공식문서](https://ko.reactjs.org/docs/components-and-props.html)
+
+## React 성능향상
+- React DavTools
+- `class` 사용 시 `shouldComponentUpdate(nextProps, nextState, nextContext)`
+    - true면 렌더링, false면 렌더링X
+    - 렌더링 타이밍을 선택할 수 있음
+- `class` 사용 시 `PureComponent` 사용
+- `hooks` 사용 시 `React.memo` 사용
+    - 컴포넌트를 `memo()`로 감싸줌
+- 자식컴포넌트가 모두 `PureConponent` or `memo()`면 부모도 적용 가능
+- `props`는 부모가 바꿔야함. 자식X
+    - 바꿔야 한다면 자식 컴포넌트에서 `props`를 `state`에 넣어줌
+- `jsx`안에서는 `for, if` 사용 불가
+    - 삼항연산자로 작성
+- `hooks`에서는 `this`의 속성들을 `Ref`로 표현
+
+
+## state와 ref의 차이
+- `state`는 set하게 되면(바뀌면) 다시 렌더링
+- `ref`는 바뀌어도 렌더링 되지 않음
+    - `ref`는 항상 `ref.current`로 접근
