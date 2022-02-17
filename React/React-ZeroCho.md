@@ -165,6 +165,7 @@ module.exports = {
 ## props
 [props 공식문서](https://ko.reactjs.org/docs/components-and-props.html)
 
+
 ## React 성능향상
 - React DavTools
 - `class` 사용 시 `shouldComponentUpdate(nextProps, nextState, nextContext)`
@@ -179,9 +180,34 @@ module.exports = {
 - `jsx`안에서는 `for, if` 사용 불가
     - 삼항연산자로 작성
 - `hooks`에서는 `this`의 속성들을 `Ref`로 표현
+- 비동기함수에서 바깥쪽 변수를 참조하면 클로저 발생
+- `useMemo` : 복잡한 함수 결과값을 기억
+- `useCallback` : 함수 자체를 기억
+    - 함수 자체의 생성이 너무 오래 걸릴 경우 기억
+- `useRef` : 일반 값을 기억
 
 
 ## state와 ref의 차이
 - `state`는 set하게 되면(바뀌면) 다시 렌더링
 - `ref`는 바뀌어도 렌더링 되지 않음
     - `ref`는 항상 `ref.current`로 접근
+
+
+## 라이프사이클 LifeCycle
+#### Class
+- `componentDidMount()` : 처음 컴포넌트 렌더가 성공적으로 실행된 직후 (비동기요청을 많이함)
+- `componentWillUnmount()` : 컴포넌트가 제거되기 직전 (비동기요청 정리)
+    - 위 두가지가 보통 쌍으로
+- `componentDidUpdate()` : 리렌더링 후
+#### hooks
+- `useEffect()` : 두번째 인자에 들어가는 값이 바뀔 때마다 함수 내용이 다시 실행됨
+    - 아무런 값도 안들어가면 맨 처음에만 실행되고 다시 실행되지 않음
+    - `useEffct`를 여러번 쓸 수도 있음
+```
+useEffect(() => { // componentDidMount, componentWillUnmount 역할(1대1 대응은 아님)
+    return () => { // componentWillUnmount 역할
+        
+    }
+}, []) // closer 해결(배열에 넣은 값들이 바뀔때 useEffect가 실행)
+```
+
