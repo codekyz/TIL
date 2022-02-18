@@ -211,3 +211,32 @@ useEffect(() => { // componentDidMount, componentWillUnmount 역할(1대1 대응
 }, []) // closer 해결(배열에 넣은 값들이 바뀔때 useEffect가 실행)
 ```
 
+
+## useReducer (hooks)
+- `state`는 직접 변경 불가능
+    - 이벤트 발생을 통해 `action`을 `dispatch`해서 변경
+    - 어떻게 바꾸는지는 `reducer`에 기록
+```
+const initialState = {
+    winner: '',
+    turn: 'O',
+};
+
+const SET_WINNER = 'SET_WINNER';
+
+const reducer = (state, action) => {
+    switch (action.type) {
+        case SET_WINNER:
+            return {
+                ...state, // 기존 state 얕은 복사
+                winner: action.winner,
+            }
+    }
+};
+.
+.
+.
+    const onClickTable = useCallback(() => {
+        dispatch({ type: SET_WINNER, winner: 'O' }); // action 객체를 dispatch
+    }, []);
+```
