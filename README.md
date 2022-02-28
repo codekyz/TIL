@@ -2,7 +2,12 @@
 
 > 강의를 듣고 삽질하면서 새롭게 알게된 내용들을 기록합니다.
 
-# HTML&CSS
+- 📑[https://github.com/codekyz/TIL](https://github.com/codekyz/TIL)
+- 📚[https://codekyz0111.gitbook.io/today-i-learned/](https://codekyz0111.gitbook.io/today-i-learned/)
+
+# WEB
+
+## HTML&CSS
 
 - [HTML5 정리](https://github.com/codekyz/TIL/blob/fb49ad9b31d2f80c3846550a9cb969babf541070/HTML&CSS/HTML-basic-1.md)
 - [CSS3 정리](https://github.com/codekyz/TIL/blob/fb49ad9b31d2f80c3846550a9cb969babf541070/HTML&CSS/CSS-basic-1.md)
@@ -10,7 +15,7 @@
 - [HTML5 Semantic Tags](https://github.com/codekyz/TIL/blob/2fe8ca2701041a9f3b457993ab147a05fc78c8c4/HTML&CSS/Semantic-Tags.md)
 - [CSS 방법론](https://github.com/codekyz/TIL/blob/main/HTML%26CSS/CSS-%EB%B0%A9%EB%B2%95%EB%A1%A0.md)
 
-# JavaScript
+## JavaScript
 
 - [JavaScript의 비동기 처리](https://github.com/codekyz/TIL/blob/fb49ad9b31d2f80c3846550a9cb969babf541070/JavaScript/Asynchronous_processing.md)
 - [JavaScript의 동작원리](https://github.com/codekyz/TIL/blob/fb49ad9b31d2f80c3846550a9cb969babf541070/JavaScript/How_JavaScript_works.md)
@@ -27,14 +32,14 @@
 - [ES6+ basic6](https://github.com/codekyz/TIL/blob/fb49ad9b31d2f80c3846550a9cb969babf541070/JavaScript/ES6+basic-6.md)
   - 병렬적 로직/async,await/파이프라인의 필요성
 
-# React
+## React
 
 - [만들면서 배우는 리액트:기초 - 진유림님](https://github.com/codekyz/TIL/blob/main/React/React-basic.md)
 - [웹 게임을 만들며 배우는 React - 조현영님](https://github.com/codekyz/TIL/blob/main/React/React-ZeroCho.md)
   - React concept, Webpack 설정
 - [React-Styled-Components](https://github.com/codekyz/TIL/blob/main/React/React-StyledComponents.md)
 
-# Vue
+## Vue
 
 - Vue 초급강좌
   - [Vue1_Instance_Component](https://github.com/codekyz/TIL/blob/fb49ad9b31d2f80c3846550a9cb969babf541070/Vue/Vue1_Instance_Component.md)
