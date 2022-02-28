@@ -42,5 +42,5 @@
 - [Publish](Publish/README.md)
   - [gh-pages](Publish/gh-pages.md)
   - [AWS](Publish/AWS.md)
-- [ETC](ETC/README.md))
+- [ETC](ETC/README.md)
   - [API](ETC/API.md)
