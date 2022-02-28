@@ -24,14 +24,14 @@
 - [TypeScript](TypeScript/README.md)
   - [TypeScript 기초](TypeScript/TypeScript.md)
 - [Vue](Vue/README.md)
-  - [Vue Basic]()
+  - Vue Basic
     - [Instance Component](Vue/Vue1_Instance_Component.md)
     - [Router, Axios](Vue/Vue2_Router_Axios.md)
     - [Axios, Template](Vue/Vue3_Axios_Template.md)
     - [Vue CLI](Vue/Vue4_CLI.md)
     - [Template syntax](Vue/Vue5_Template_syntax.md)
     - [Template](Vue/Vue6.md)
-  - [Vue Intermediate]()
+  - Vue Intermediate
     - [Vue 중급강좌1](Vue/Vue-intermediate1.md)
     - [Vue 중급강좌2](Vue/Vue-intermediate2.md)
   - [Vue Complete](Vue/Vue-complete1.md)
