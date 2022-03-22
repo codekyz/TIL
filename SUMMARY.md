@@ -17,7 +17,9 @@
     - [ES6+ Basic4](JavaScript/ES6+basic-4.md)
     - [ES6+ Basic5](JavaScript/ES6+basic-5.md)
     - [ES6+ Basic6](JavaScript/ES6+basic-6.md)
-  - [모던 자바스크립트 Deep Dive](JavaScript/JS-deep-dive.md)
+  - 모던 자바스크립트 Deep Dive
+    - [모던 자바스크립트 Deep Dive 1](JavaScript/JS-deep-dive-1.md)
+    - [모던 자바스크립트 Deep Dive 2](JavaScript/JS-deep-dive-2.md)
 - [React](React/README.md)
   - [React 기초 - 진유림님](React/React-basic.md)
   - [React 기초 - 제로초님](React/React-ZeroCho.md)
