@@ -52,6 +52,7 @@
 - [Tools](Tools/README.md)
   - [Git and Github](Tools/Using_git_github.md)
   - [Webpack](Tools/Webpack.md)
+  - [Redux](JavaScript/Redux.md)
   - [gh-pages](Tools/gh-pages.md)
   - [Firebase](Tools/Firebase.md)
   - [AWS](Tools/AWS.md)
