@@ -12,10 +12,13 @@
 - index = home page
 - component name은 중요하지 않음
 - 404 page를 제공
+- `homepage/movies` = `pages/movies/index.js` 폴더 구조에 따라 맵핑
+- 페이지가 하나라면 폴더를 만들 필요 없음
 
 ## routing
 
-[공식문서](https://nextjs.org/docs/api-reference/next/router)
+[routing공식문서](https://nextjs.org/docs/routing/introduction)
+[router공식문서](https://nextjs.org/docs/api-reference/next/router)
 
 - Link component 존재
 - Link is only for 'href'
@@ -30,7 +33,35 @@
     <a>About</a>
   </Link>
 </nav>
+
+or
+
+const router = useRouter();
+const onClick = (id: number) => {
+  router.push(`/movies/${id}`);
+};
+
+or
+
+const router = useRouter();
+const onClick = (id: number, title: string) => {
+  router.push(
+    {
+      pathname: `/movies/${id}`,
+      query: {
+        title,
+      },
+    },
+    `/movies/${id}`
+  );
+};
 ```
+
+## Dynamic routes
+
+[공식문서](https://nextjs.org/docs/routing/dynamic-routes)
+
+- `homepage/movies/:id` = `pages/movies/[id].js`
 
 ## Styled-jsx
 
@@ -161,3 +192,9 @@ const App = ({ Component, pageProps }: AppProps) => {
 ## Rewrite
 
 [공식문서](https://nextjs.org/docs/api-reference/next.config.js/rewrites)
+
+## Server Side Rendering
+
+[공식문서](https://nextjs.org/docs/api-reference/data-fetching/get-server-side-props#getserversideprops-with-typescript)
+
+- `getServerSideProps()` : 서버측에서만 실행되는 코드
