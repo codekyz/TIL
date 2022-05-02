@@ -91,3 +91,61 @@
   - arguments, rest parameter 사용하기
   - 매개변수를 객체에 담아서 넘기기
   - 랩핑하는 함수 만들기
+
+# 분기 다루기
+
+- 값식문
+
+  - `()` 함수의 실행과 관련
+  - JSX에서 `{}` 안에는 값과 식만 들어가야함
+  - 삼항연산자 -> 값으로 귀결될 수 있는 식
+
+- 삼항연산자 다루기
+
+  - 삼항연산자 사용에 대한 일관성 중요
+  - 조건 ? 참(식) : 거짓(식)
+  - 조건이나 식이 헷갈리는 경우 괄호로 감싸기
+  - void한 함수를 삼항연산자에 사용할 경우 undefined
+
+- Truthy and Falsy
+
+  - Truthy === 참 같은 값
+  - Falsy === 거짓 같은 값(undefined, null)
+  - [mdn](https://developer.mozilla.org/ko/docs/Glossary/Truthy)
+
+- 단축평가 short-circuit evaluation
+
+  - `||`, `&&`
+
+- else if 피하기
+
+  - else if문은 else처리를 한번 하고 if문을 사용하는거와 같음
+  - else if가 늘어지면 switch 고려하기
+
+- else 피하기
+- Early Return
+
+  - 함수를 미리 종료
+  - 최상위에 거르는 로직을 위치시킴
+  - 사고하기 편함
+
+- 부정조건문 지양하기
+
+  - 생각을 여러번 해야할 수 있음
+  - Early Return, Form Validation, 보안 혹은 검사하는 로직에는 사용하게 될 수 있음
+
+- Default Case 고려하기
+
+  - edge case 고려하기
+  - 사용자 실수 예방하기
+
+- 명시적인 연산자 사용 지향하기
+
+  - 괄호사용
+  - 예측가능하고 디버깅하기 쉬운 코드
+
+- Nullish coalescing operator
+
+  - `??` null 병합 연산자, null과 undefined에 대해 평가할때만 사용
+
+- 드모르간의 법칙
