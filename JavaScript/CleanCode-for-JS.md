@@ -149,3 +149,127 @@
   - `??` null 병합 연산자, null과 undefined에 대해 평가할때만 사용
 
 - 드모르간의 법칙
+
+# 배열 다루기
+
+- JavaScript의 배열은 객체다
+
+  - key와 value로 값을 넣을 수 있음
+  - `Array.isArray(arr)` : 배열확인 빌트인 메서드
+
+- Array.length 주의하기
+
+  - `Array.length` : 배열에 길이보다 마지막 인덱스에 가까움
+  - ex) 임의의 숫자를 할당하면 해당 배열의 인덱스가 늘어남
+  - ex) 0을 할당하면 초기화 됨
+  - **length를 조작해도 Array에 영향이 감**
+
+- 배열 요소(element)에 접근하기
+
+  - `[first, second ...] = inputs` : 구조분해 할당
+  - arr[0], arr[1]... 이런 방식의 접근 줄이기
+
+- 유사 배열 객체
+
+  - ex) arguments, 매개변수를 선언하지 않아도 유사배열 객체로 들어오게됨
+  - 유사 배열 객체는 map과 같은 고차함수를 사용할 수 없음
+
+- 불변성(immutable) 지키기
+
+  - 1. 배열을 복사한다
+  - 2. 새로운 배열을 반환하는 메서드들을 활용한다
+    - filter, map, slice...
+
+- for문, 배열 고차 함수로 리팩토링
+- 배열 메서드 체이닝 활용하기
+
+  - ex) arr.filter().sort().map() ...
+
+- map vs forEach
+
+  - `return의 차이`
+    - forEach는 반환 값이 undefined로 **요소마다 콜백함수를 실행**하기만 함
+    - map은 콜백함수의 반환 값이 저장되어 **새로운 배열을 반환** 함
+  - 실행만 시키는 경우에는 forEach를 사용
+
+- Continue & Break
+  - 특정 레이블이나 문의 흐름을 제어함
+  - **forEach나 map, filter 등에서 사용 불가능(문법오류)**
+  - for문을 쓰거나 try...catch문을 사용
+  - 혹은 every, some, find, findIndex와 같은 배열 메서드와 조합하여 사용
+
+# 객체 다루기
+
+- Shorthand Properties(축약 문법)를 잘 알고 일관성있게 사용하자
+
+  - Concise Method(간결한 메소드)
+  - ES2015+, 모던 자바스크립트 문법
+
+- Computed Property Name
+
+  - 동적으로 들어오는 값도 프로퍼티 네임으로 활용할 수 있음
+  - ex) `setState({[e.target.name]: e.target.value});`
+  - ES2015+, 모던 자바스크립트 문법
+
+- Object Lookup Table(순람표)
+
+  - key와 value로 나열된 데이터 구조
+  - if나 switch문이 늘어질 경우
+
+  ```
+  function getUserType(type) {
+    const USER_TYPE = {
+      ADMIN: "관리자",
+      INSTRUCTOR: "강사",
+      STUDENT: "수강생",
+    };
+    return USER_TYPE[type] || "해당 없음";
+  }
+
+  // 바로 리턴하는 형태
+  function getUserType(type) {
+    return (
+      {
+        ADMIN: "관리자",
+        INSTRUCTOR: "강사",
+        STUDENT: "수강생",
+      }[type] ?? "해당 없음"
+    );
+  }
+  ```
+
+  - 상수를 따로 관리하는 형태가 베스트
+  - 불필요한 분기문을 줄이는 예
+
+- Object Destructuring(객체 구조 분해 할당)
+
+  - `(name, { age, location })` : name은 필수, 나머지는 옵션
+  - `const { 0: first, 2: third } = orders vs const [first, , third] = orders`
+
+- Object.freeze(객체 동결)
+
+  - `Object.isFrozen(obj)` : 동결이 잘 되었는지 확인하는 메서드
+  - shallow copy vs deep copy
+    - deep freezing이 되지않음(depth가 있는 경우)
+    - 중첩된 freezing이 필요함
+  - deepFreeze 유틸함수
+    - 1. 객체를 순회
+    - 2. 값이 객체인지 확인
+    - 3. 객체이면 재귀
+    - 4. 그렇지 않으면 return Object.freeze(obj)
+  - TypeScript => readonly 키워드 사용
+
+- Prototype 조작 지양하기
+
+  - 이미 JS는 많이 발전(직접 만들어서 모듈화하기 => 배포)
+  - 빌트인 객체를 건들지 말자
+  - prototype을 건드는 것은 몽키패칭 언어이기 때문에 위험
+
+- hasOwnProperty(프로퍼티를 가졌느냐)
+
+  - 보호를 받지 못하기 때문에 아래와 같이 call해서 사용
+  - `Object.prototype.hasOwnProperty.call(foo, "bar");`
+
+- 직접 접근 지양하기
+  - 직접 접근해서 값을 변경X, 함수에 위임하여 추상화O
+  - 데이터에 접근할 때는 항상 안전하게 접근
