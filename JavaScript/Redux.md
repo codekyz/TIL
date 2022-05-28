@@ -1,13 +1,21 @@
 # Vanilla Redux
 
 [공식문서](https://ko.redux.js.org/introduction/getting-started/)
+[생활코딩 Redux](https://inf.run/uPbY)
 
 - Redux는 `JavaScript Apps`를 위한 상태관리 라이브러리(React에 의존하지 않음)
 - **Mutating(변경) State XXX, return new State Objects OOO**
 
+### 특징
+
+- 한 곳에 데이터를 중앙집중적으로 관리함으로 인해 복잡성을 낮춤
+- 데이터를 제어할 때는 반드시 함수를 통함으로 인해 예측 불가능한 데이터 변경을 예측 가능하게 만듬
+- UNDO와 REDO를 손쉽게 할 수 있음
+
 ## Store and Reducer
 
 - 데이터(state)를 넣는 곳
+- State에 직접 접속하는 것은 금지되어 있음
 - `createStore(reducer)` : store는 reducer를 요구함
 - `reducer` : data를 modify하는 function, return data
   - data를 변경할 수 있는 유일한 곳
@@ -23,7 +31,7 @@
 
 ## Actions
 
-- `action` : redux에서 function을 부를 때 쓰는 두번째 parameter or argument
+- `action` : redux에서 function(reducer)을 부를 때 쓰는 두번째 parameter or argument
 - `reducer`와 소통하기 위한 방법
 - `store.dispatch({key: value})`
 
