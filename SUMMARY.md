@@ -1,6 +1,8 @@
 # Summary
 
 - [Intro](README.md)
+- [독서기록](독서기록/README.md)
+  - [개발일지 1](독서기록/개발일지-1.md)
 - [HTML&CSS](HTML&CSS/README.md)
   - [CSS 방법론](HTML&CSS/CSS-방법론.md)
   - [CSS 기초](HTML&CSS/CSS-basic-1.md)
