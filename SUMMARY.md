@@ -3,6 +3,7 @@
 - [Intro](README.md)
 - [Project1 독서달력](P1독서달력/README.md)
   - [개발일지 1](P1독서달력/개발일지-1.md)
+  - [개발일지 2](P1독서달력/개발일지-2.md)
 - [HTML&CSS](HTML&CSS/README.md)
   - [CSS 방법론](HTML&CSS/CSS-방법론.md)
   - [CSS 기초](HTML&CSS/CSS-basic-1.md)
