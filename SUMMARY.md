@@ -1,9 +1,9 @@
 # Summary
 
 - [Intro](README.md)
-- [2023 Project1 독서달력](P1독서달력/README.md)
-  - [개발일지 1](P1독서달력/개발일지-1.md)
-  - [개발일지 2](P1독서달력/개발일지-2.md)
+- [2023 Project1 소북소북](P1소북소북/README.md)
+  - [개발일지 1](P1소북소북/개발일지-1.md)
+  - [개발일지 2](P1소북소북/개발일지-2.md)
 - [2022](2022/README.md)
   - [HTML&CSS](2022/HTML&CSS/README.md)
     - [CSS 방법론](2022/HTML&CSS/CSS-방법론.md)
